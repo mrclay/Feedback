@@ -6,7 +6,8 @@ return call_user_func(function () {
 
     $config['isTesting'] = true;
 
-    $config['includeName'] = false;
+    // show Name field (required)
+    $config['includeName'] = true;
 
     $config['emailTo'] = 'user@example.com';
 
