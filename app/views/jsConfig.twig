@@ -1,0 +1,42 @@
+{% if 0 %}<script>{% endif %}
+{% autoescape false %}
+var Feedback_config = this.Feedback_config || {};
+(function (c) {
+    c.imgTitle = 'We welcome your feedback!';
+    c.closeButtonTitle = 'Close';
+    c.imgSize = [35, 107];
+    c.formSize = [435, 350]; // include room for button
+    c.layoutWidth = 990; // layout width of page
+
+    c.jQueryUrl = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js";
+    c.cssTimestamp = {{ cssTimestamp }};
+    c.url = c.url || {{ url|json_encode }};
+
+    c.adjustWindow = function (innerDiv) {
+        var ww = $(window).width();
+        if (ww < c.layoutWidth + (2 * c.imgSize[0])) {
+            if ($('#COET-menu').get(0)) {
+                // CEOT
+                if (ww < c.layoutWidth + c.imgSize[0]) {
+                    $('#COET-header').next()[0].style.paddingLeft = (c.imgSize[0] - 13) + 'px';
+                    innerDiv.style.left = (-c.formSize[0] - 10) + 'px';
+                } else {
+                    $('#COET-header').next()[0].style.marginLeft = '35px';
+                }
+            } else {
+                // elsewhere
+                if (ww < c.layoutWidth + c.imgSize[0]) {
+                    document.body.style.paddingLeft = (c.imgSize[0] - 13) + 'px';
+                    innerDiv.style.left = (-c.formSize[0] - 10) + 'px';
+                } else {
+                    document.body.style.paddingLeft = '35px';
+                }
+            }
+        }
+    };
+
+})(Feedback_config);
+{% endautoescape %}
+{% if 0 %}</script>{% endif %}
+
+{% include 'jsConfig/init.js' %}

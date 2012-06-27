@@ -1,0 +1,103 @@
+html body div#Feedback {
+    color: #fff;
+    font-size: 13px;
+}
+html body #Feedback a {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+#Feedback input {
+	font: 13px/100% Arial, Helvetica, sans-serif;
+	padding: 5px;
+	border: 1px solid #cccccc;
+	color:#666666;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+#Feedback textarea {
+	font: 110% Arial, Helvetica, sans-serif;
+	border: solid 1px #cccccc;
+	padding: 5px;
+	color:#666666;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+#Feedback textarea:focus,
+#Feedback input[type="text"]:focus {
+	border: solid 1px #0021A5;
+	background: #ccddff;
+	color:#000;
+}
+
+#Feedback #Feedback_submit {
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	background:#090;
+	border: 1px solid #050;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	width: auto;
+	height: 25px;
+	padding: 2px 6px 2px 6px;
+	margin:10px 0 10px 0;
+	cursor: pointer;
+}
+
+#Feedback_inner {
+            border-radius: 20px;
+       -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+            border-top-right-radius: 0;
+        -moz-border-radius-topright: 0;
+    -webkit-border-top-right-radius: 0;
+    background: #0066CC;
+    margin:0 0 0 20px;
+    padding: 0 45px 0 10px;
+    height: 350px;
+}
+#Feedback_open {
+            box-shadow: 2px 2px 5px #999;
+       -moz-box-shadow: 2px 2px 5px #999;
+    -webkit-box-shadow: 2px 2px 5px #999;
+}
+#Feedback_close {
+    position: absolute; right: -13px; top: -13px;
+    cursor: pointer;
+    display: none;
+}
+.visible #Feedback_close {
+    display: block;
+}
+
+.visible #Feedback_open {
+            box-shadow: none;
+       -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.visible #Feedback_inner {
+            box-shadow: 3px 3px 10px #999;
+       -moz-box-shadow: 3px 3px 10px #999;
+    -webkit-box-shadow: 3px 3px 10px #999;
+}
+
+#Feedback h3 {padding: 10px 0 5px; font-size: 15px; color: #fff; margin:0}
+
+#Feedback table { padding: 0; border: 0; margin: .5em; color: #fff; }
+
+#Feedback td { padding: 0 0 3px; border: 0; vertical-align: middle; color: #fff; }
+
+#Feedback table, #Feedback textarea { width:350px; }
+
+#Feedback textarea { height: 120px; }
+
+#Feedback .submitting * { cursor: wait; }
+
+#Feedback_response {
+    display: table-cell;
+    height: 350px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}

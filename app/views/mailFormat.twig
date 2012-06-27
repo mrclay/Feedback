@@ -1,0 +1,13 @@
+{% autoescape false %}
+{# This template is for e-mail, not HTML, hence it's OK to include raw input values. #}
+
+{% if not name %}{% set name = '(Anonymous)' %}{% endif %}}
+
+Feedback from {{ name }} {% if email %}<{{ email }}>{% else %}{{ '(no e-mail)' }}{% endif %}
+
+{{ msg }}
+
+===
+URL : {{ url }}
+UA  : {{ ua }}
+{% endautoescape %}

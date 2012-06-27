@@ -1,0 +1,47 @@
+<script>
+this.Feedback_formIsValid = function ($) {
+    // at least 4+ words, please
+    var $name = $('#Feedback input[name="fb_name"]');
+    if ($name.length && ! /\w+/.test($name.val())) {
+        alert('Name is required. Thanks!');
+        return false;
+    }
+    if (! /\w+@\w+\.\w+/.test($('#Feedback input[name="fb_email"]').val())) {
+        alert('E-mail is required. Thanks!');
+        return false;
+    }
+    if (! /(\S+\s+){3}\S+/.test($('#fb_msg').val())) {
+        alert('Could you please provide more details?');
+        return false;
+    }
+    return true;
+};
+this.Feedback_afterFormLoad = function ($) {
+    var $name = $('#Feedback input[name="fb_name"]');
+    if ($name.length) {
+        $name[0].focus();
+    } else {
+        $('#Feedback input[name="fb_email"]').each(function () { this.focus();});
+    }
+};
+</script>
+<form action="#" method="post">
+    <div>
+        {{ tokenInput|raw }}
+        <input id="Feedback_url" type="hidden" name="fb_url" value="" />
+        <h3>Having a problem? Got a suggestion for us?</h3>
+
+        {% if config.includeName %}
+        <p style="margin:0">Your name: <input type="text" name="fb_name" value="{{ name }}" size="20" /> (required)</p>
+        {% endif %}
+
+        <p style="margin:0 0 .5em">Your e-mail: <input type="text" name="fb_email" value="{{ email }}" size="20" /> (required)</p>
+
+        <div>Your message:<br />
+            <textarea id="fb_msg" name="fb_msg" cols="40" rows="5">{% if config.isTesting %}TESTING: Your message will go to {{ config.emailTo }}{% endif %}</textarea></div>
+
+        <p><small>(This URL and your browser version will be recorded for you.)</small></p>
+        <p style="text-align:right"><input id="Feedback_submit" type="submit" value="Send Your Message" />
+            to <span style="{% if config.isTesting %}font-weight:900{% endif %}">{{ config.emailTo }}</span></p>
+    </div>
+</form>
