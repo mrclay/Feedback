@@ -1,6 +1,20 @@
 {
+    "authors": [
+        {
+            "name": "Steve Clay",
+            "homepage": "http://www.mrclay.org/",
+            "role": "Developer"
+        }
+    ],
+    "license": "BSD-2-Clause",
+    "minimum-stability": "dev",
     "require": {
         "silex/silex": "1.0.*",
-        "twig/twig": "1.6.*"
+        "twig/twig": "1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "app/lib/"
+        }
     }
 }

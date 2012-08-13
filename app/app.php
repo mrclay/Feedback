@@ -1,11 +1,12 @@
 <?php
 
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
-use Silex\Application;
+use Symfony\Component\HttpFoundation\Response,
+    Symfony\Component\HttpFoundation\Request,
+    Silex\Application;
 
-/* @var Silex\Application $app */
-$app = (require __DIR__ . '/bootstrap.php');
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+$app = new Application();
 
 $app['webPath'] = dirname(__DIR__);
 
@@ -27,7 +28,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     ),
 ));
 
-
 $app['tokenMgr'] = $app->share(function () use ($app) {
     return new UFCOE\CsrfTokenManager($app['session']);
 });
@@ -42,19 +42,6 @@ $app['errorResponse'] = function ($err) use ($app) {
     ));
 };
 
-
-$app->post('/send', function (Application $app, Request $req) {
-    return (require __DIR__ . '/actions/send.php');
-});
-
-
-$app->get('/form', function(Application $app) {
-    return (require __DIR__ . '/actions/form.php');
-});
-
-
-$ctrl = $app->get('/{version}', function(Application $app, $version) {
-    return (require __DIR__ . '/actions/sendJs.php');
-})->value('version', '');
+require __DIR__ . '/app-routes.php';
 
 return $app;

@@ -18,4 +18,8 @@ $body = $app['twig']->render('jsConfig.twig', array(
 $resp = new UFCOE\JsResponse($body);
 $resp->setPublic();
 $resp->setMaxAge($version ? 365 * 86400 : 0);
+if ($version) {
+    $resp->setExpires(new DateTime("+1 year"));
+    header_remove('pragma');
+}
 return $resp;
